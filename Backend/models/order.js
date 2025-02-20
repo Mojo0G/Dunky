@@ -1,44 +1,13 @@
 const mongoose = require('mongoose');
 
 const OrderSchema = new mongoose.Schema({
-    customer: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-      },
-    shopkeeper: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-      },
-  items: [
-    {
-      name: {
-        type: String,
-        required: true,
-      },
-      description: {
-        type: String,
-        required: true,
-      },
-      price: {
-        type: Number,
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-    },
-  ],
-  totalAmount: {
-    type: Number,
+  image: {
+    type: Buffer, // Store the image as binary data
     required: true,
   },
-  status: {
-    type: String,
-    enum: ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'],
-    default: 'Pending',
+  comment: {
+    type: String, // e.g., 'image/png' or 'image/jpeg'
+    required: true,
   },
   createdAt: {
     type: Date,
@@ -46,6 +15,6 @@ const OrderSchema = new mongoose.Schema({
   },
 });
 
-const order = mongoose.model('Order', OrderSchema);
+const Order = mongoose.model('Order', OrderSchema);
 
-module.exports = order;
+module.exports = Order;

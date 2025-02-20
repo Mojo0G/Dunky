@@ -1,7 +1,7 @@
 const express = require('express');
 const router =  express.Router();
-const updateStatus = require('../controllers/seller')
 const User = require('../models/user');
+const addOrder = require('../controllers/customer');
 
 router.route('/')
 .get(async (req, res) => {
@@ -22,14 +22,13 @@ router.route('/seller')
 
 router.route('/customer')
 .get((req, res) => {
-    
     return res.json('Welcome to the customer dashboard');
 })
 
-router.route('/orders')
+router.route('/customer/order')
 .get((req, res) => {
     
 })
-.post(updateStatus)
+.post(addOrder)
 
 module.exports = router
