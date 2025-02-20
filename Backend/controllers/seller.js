@@ -4,9 +4,9 @@ const updateStatus = async (req, res) => {
     // controllers/orderController.js
   const status = req.status;
   try {
-    
+
     const orderId = req.orderId;
-    const userId = req.user._id; // Assuming you have user authentication middleware
+    const userId = req.user._id; 
 
     const order = await Order.findOne({
       _id: orderId,
